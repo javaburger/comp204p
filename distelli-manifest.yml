@@ -17,9 +17,9 @@ bandienkh/COMP204P:
   #The PostInstall section occurs after install: http://distel.li/postinstallsection
   PostInstall:
     - echo "Begin PostInstall"
-    - sudo pip install -r requirements.txt
+    - pip install -r requirements.txt
 
   #The Exec section executes and monitors the application: distel.li/execsection
   Exec:
     - cd ./app
-    - sudo gunicorn --bind 0.0.0.0:80 COMP204P.wsgi:application
+    - gunicorn --bind 0.0.0.0:80 COMP204P.wsgi:application

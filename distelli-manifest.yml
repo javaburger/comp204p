@@ -12,14 +12,17 @@ bandienkh/COMP204P:
   #The PreInstall section occurs before install: distel.li/preinstallsection
   PreInstall:
     - echo "Begin PreInstall"
-    #- sudo apt-get -y install python-virtualenv
+    - sudo pip install virtualenv
+    - virtualenv ~/env
+    - source ~/env/bin/activate
+    - sudo pip install -r requirements.txt
 
   #The PostInstall section occurs after install: http://distel.li/postinstallsection
   PostInstall:
     - echo "Begin PostInstall"
-    - sudo pip install -r requirements.txt
 
   #The Exec section executes and monitors the application: distel.li/execsection
   Exec:
+    - source ~/env/bin/activate
     - cd ./app
     - sudo gunicorn --bind 0.0.0.0:80 COMP204P.wsgi:application

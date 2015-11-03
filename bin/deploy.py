@@ -8,6 +8,7 @@ env.hosts = ['localhost:1234']
 def deploy():
 	run('git clone https://github.com/javaburger/comp204p.git')
 	cd('~/comp204p')
+	run('sudo killall gunicorn')
 	run('git pull origin master')
 	cd('~/comp204p/app')
 	run('python manage.py syncdb')

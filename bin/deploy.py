@@ -3,8 +3,11 @@
 from fabric.api import *
 
 env.user = 'localuser'
-env.hosts = ['localhost']
+env.hosts = ['localhost:1234']
 
 def deploy():
 	run('git clone https://github.com/javaburger/comp204p.git')
-	run('')
+	cd('comp204p')
+	run('git pull origin master')
+	cd('app')
+	run('python manage.py runserver')

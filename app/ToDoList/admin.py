@@ -4,5 +4,11 @@ from django.contrib import admin
 
 from .models import List, Item
 
-admin.site.register(List)
-admin.site.register(Item)
+class ListAdmin(admin.ModelAdmin):
+    list_display = ['id','user', 'title']
+
+class ItemAdmin(admin.ModelAdmin):
+    list_display = ['id','list', 'content']
+
+admin.site.register(List, ListAdmin)
+admin.site.register(Item, ItemAdmin)

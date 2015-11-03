@@ -15,9 +15,6 @@ import os
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-# Quick-start development settings - unsuitable for production
-# See https://docs.djangoproject.com/en/1.8/howto/deployment/checklist/
-
 from passwords import GITHUB_SECRET_KEY
 SECRET_KEY = GITHUB_SECRET_KEY
 
@@ -38,6 +35,12 @@ INSTALLED_APPS = (
     'ToDoList'
 )
 
+LOGIN_URL = '/login/'
+
+LOGIN_EXEMPT_URLS = (
+ r'^admin/',
+) 
+
 MIDDLEWARE_CLASSES = (
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -54,7 +57,7 @@ ROOT_URLCONF = 'COMP204P.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': ['COMP204P/templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [

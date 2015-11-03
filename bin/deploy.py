@@ -10,9 +10,10 @@ def deploy():
 	with cd('~/comp204p'):
 		run('sudo killall gunicorn || true')
 		run('git reset --hard || true')
+		run('git pull origin master || true')
 		# run('git clean -f -d')
 		# run('git clean -f -x -d')
 	with cd('~/comp204p/app'):
 		run('python manage.py syncdb')
-	with cd('~/comp204p/bin'):
-		run('sudo ./gunicorn_start.bash')
+	with cd('~/comp204p/app'):
+		run('sudo ../bin/gunicorn_start.bash')

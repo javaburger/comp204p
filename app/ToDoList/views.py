@@ -12,7 +12,7 @@ from ToDoList.models import LogInForm
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
-from django.contrib.auth.forms import AuthenticationForm
+from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
 
 # Create your views here.
  
@@ -40,6 +40,28 @@ def login_view(request):
         return render(request, 'ToDoList/login.html', {
             'form': form,
         })
+
+def signup_view(request):
+    if request.user.is_authenticated():
+        return redirect('ToDoList.views.index')
+    else:
+        if request.method == 'POST':
+            username = request.POST['username']
+            password = request.POST['password2']
+            try:
+                user = User.objects.create_user(username, '', password)
+                user.save()
+            except:
+                return redirect('ToDoList.views.signupfail_view')
+            return redirect('ToDoList.views.login_view')
+        else:
+            form = UserCreationForm()
+        return render(request, 'ToDoList/signup.html', {
+            'form': form,
+        })
+
+def signupfail_view(request):
+    return render(request, 'ToDoList/signup_fail.html')
 
 def logout_view(request):
     logout(request)

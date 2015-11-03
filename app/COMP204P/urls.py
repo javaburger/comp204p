@@ -20,6 +20,8 @@ from ToDoList import views
 
 urlpatterns = [
     url(r'^login/', views.login_view, name='login'),
+    url(r'^signup/$', views.signup_view, name='signup'),
+    url(r'^signupfail/$', views.signupfail_view, name='signupfail'),
     url(r'^logout/$', views.logout_view, name='logout'),
     url(r'^$', views.index, name='index'),
     url(r'^list/(?P<id>\d+)/', views.list_detail, name='list_detail'),

@@ -196,11 +196,9 @@
 
 					<article class="article">
 
-						<h1>Log In</h1>
+						<h1>Sign Up</h1>
                         
-                        <a href="/signup/">Sign Up</a>
-                        
-                        <form action="" method="post">
+                        <form action="/signup/" method="post">
                             {% csrf_token %}
                             {{ form }}
                             <input type="submit" value="OK">

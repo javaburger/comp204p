@@ -196,15 +196,11 @@
 
 					<article class="article">
 
-						<h1>Log In</h1>
+						<h1>Sign Up Failed</h1>
                         
-                        <a href="/signup/">Sign Up</a>
+                        <p>The username has already be taken.</p>
                         
-                        <form action="" method="post">
-                            {% csrf_token %}
-                            {{ form }}
-                            <input type="submit" value="OK">
-                        </form>
+                        <a href="/signup/">Sign Up with another username</a>
 
 					</article>
 

@@ -91,7 +91,7 @@ def github(request):
 			body = json.loads(request.body)
 			if body.get("ref", None) and request.META.get('HTTP_X_GITHUB_EVENT', None):
 				if body.get("ref") == "refs/heads/master" and request.META.get("HTTP_X_GITHUB_EVENT") == "push":
-					subprocess.Popen('/home/localuser/comp204p/bin/restartAndPull.sh', shell=True)
+					subprocess.Popen('/home/localuser/comp204p/bin/restartAndPull.bash', shell=True)
 					return HttpResponse("restarting server")
 				else:
 					return HttpResponse("headers and body not properly set")

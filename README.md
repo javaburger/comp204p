@@ -21,4 +21,4 @@ todo
 
 ## Running the server (development)
 
-Configure `gunicorn_start.bash` script inside `bin` directory to the settings of your development environment and then execute the script. 
+Configure `gunicorn_start.bash` script inside `bin` directory to the proper settings (i.e. directories) and then execute the script. 

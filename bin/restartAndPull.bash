@@ -1,4 +1,5 @@
 #!/bin/bash
+
 cd /home/localuser;
 git clone https://github.com/javaburger/comp204p.git || true;
 cd /home/localuser/comp204p;
@@ -9,4 +10,4 @@ git pull origin master || true;
 cd /home/localuser/comp204p/app;
 python manage.py syncdb;
 sudo systemctl start gunicorn;
-echo pulled changes and restarted at `date "+%Y/%m/%d %H:%M:%S"`\\n >> /home/localuser/comp204p/logs.txt;
+echo `date "+%Y/%m/%d %H:%M:%S"`: Pulled changes from origin/master and restarted at (as `whoami`) >> /home/localuser/comp204p/logs.txt;

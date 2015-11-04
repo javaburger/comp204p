@@ -9,3 +9,4 @@ git reset --hard || true;
 git pull origin master || true;
 python manage.py syncdb;
 sudo systemctl start gunicorn;
+echo restarted at `date "+%Y/%m/%d %H:%M:%S"`\\n >> /home/localuser/comp204p/logs.txt

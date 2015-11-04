@@ -21,7 +21,7 @@ SECRET_KEY = GITHUB_SECRET_KEY
 
 DEBUG = False
 
-ALLOWED_HOSTS = ['127.0.0.1', 'localhost', '.ucl.ac.uk']
+ALLOWED_HOSTS = ['localhost', '.ucl.ac.uk']
 
 
 # Application definition

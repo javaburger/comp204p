@@ -85,7 +85,7 @@ def validateSignature(request):
 def github(request):
 	if request.method == 'POST':
 		if validateSignature(request):
-			if request.POST['ref'] and request.META.get('HTTP_X_GITHUB_EVENT'):
+			if request.POST.get('ref', None) and request.META.get('HTTP_X_GITHUB_EVENT', None):
 				if request.POST['ref'] == "refs/heads/master" and request.META.get('HTTP_X_GITHUB_EVENT') == "push":
 					return HttpResponse("restarting server")
 				else:

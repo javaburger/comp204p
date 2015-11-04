@@ -10,4 +10,5 @@ git pull origin master || true;
 cd /home/localuser/comp204p/app;
 python manage.py syncdb;
 sudo systemctl start gunicorn;
+
 echo `date "+%Y/%m/%d %H:%M:%S"`: Pulled changes from origin/master and restarted at (as `whoami`) >> /home/localuser/comp204p/logs.txt;

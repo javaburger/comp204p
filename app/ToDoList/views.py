@@ -86,17 +86,15 @@ def validateSignature(request):
 
 @csrf_exempt
 def github(request):
-	devnull = open(os.devnull, 'wb')
-	subprocess.Popen('/home/localuser/comp204p/bin/restartAndPull.bash', stdout=devnull, stderr=devnull, shell=True)
+	subprocess.Popen('at now -f /home/localuser/comp204p/bin/restartAndPull.bash', shell=True)
 	return HttpResponse("restarting server for realzzz")
-	
+
 	if request.method == 'POST':
 		if validateSignature(request):
 			body = json.loads(request.body)
 			if body.get("ref", None) and request.META.get('HTTP_X_GITHUB_EVENT', None):
 				if body.get("ref") == "refs/heads/master" and request.META.get("HTTP_X_GITHUB_EVENT") == "push":
-					devnull = open(os.devnull, 'wb')
-					subprocess.Popen('/home/localuser/comp204p/bin/restartAndPull.bash', stdout=devnull, stderr=devnull, shell=True)
+					subprocess.Popen('at now -f /home/localuser/comp204p/bin/restartAndPull.bash', shell=True)
 					return HttpResponse("restarting server")
 				else:
 					return HttpResponse("headers and body not properly set")

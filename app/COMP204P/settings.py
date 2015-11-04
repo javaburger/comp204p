@@ -19,7 +19,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 from passwords import GITHUB_SECRET_KEY
 SECRET_KEY = GITHUB_SECRET_KEY
 
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = []
 

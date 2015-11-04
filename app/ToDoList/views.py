@@ -20,6 +20,7 @@ from secure import GITHUB_WEBHOOK_KEY
 
 import hmac
 import hashlib
+import json
 
 # Create your views here.
  
@@ -85,8 +86,9 @@ def validateSignature(request):
 def github(request):
 	if request.method == 'POST':
 		if validateSignature(request):
-			if request.POST.get('ref', None) and request.META.get('HTTP_X_GITHUB_EVENT', None):
-				if request.POST['ref'] == "refs/heads/master" and request.META.get('HTTP_X_GITHUB_EVENT') == "push":
+			body = json.loads(request.body)
+			if body.get("ref", None) and request.META.get('HTTP_X_GITHUB_EVENT', None):
+				if body.get("ref") == "refs/heads/master" and request.META.get("HTTP_X_GITHUB_EVENT") == "push":
 					return HttpResponse("restarting server")
 				else:
 					return HttpResponse("headers and body not properly set")

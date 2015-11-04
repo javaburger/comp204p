@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from django.http import Http404
+from django.http import Http404, HttpResponse
 from django.shortcuts import redirect
 
 from ToDoList.models import List
@@ -37,9 +37,7 @@ def login_view(request):
                 return redirect('ToDoList.views.login_view')
         else:
             form = AuthenticationForm()
-        return render(request, 'ToDoList/login.html', {
-            'form': form,
-        })
+            return render(request, 'ToDoList/login.html', { 'form': form })
 
 def signup_view(request):
     if request.user.is_authenticated():
@@ -66,6 +64,9 @@ def signupfail_view(request):
 def logout_view(request):
     logout(request)
     return redirect('ToDoList.views.login_view')
+
+def github(request):
+    return HttpResponse("sup bitches")
 
 @login_required
 def index(request):

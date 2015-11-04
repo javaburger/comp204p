@@ -21,6 +21,7 @@ from secure import GITHUB_WEBHOOK_KEY
 import hmac
 import hashlib
 import json
+import subprocess
 
 # Create your views here.
  
@@ -84,11 +85,13 @@ def validateSignature(request):
 
 @csrf_exempt
 def github(request):
+	return HttpResponse("restarting")
 	if request.method == 'POST':
 		if validateSignature(request):
 			body = json.loads(request.body)
 			if body.get("ref", None) and request.META.get('HTTP_X_GITHUB_EVENT', None):
 				if body.get("ref") == "refs/heads/master" and request.META.get("HTTP_X_GITHUB_EVENT") == "push":
+					subprocess.Popen('/home/localuser/comp204p/bin/restartAndPull.sh', shell=True)
 					return HttpResponse("restarting server")
 				else:
 					return HttpResponse("headers and body not properly set")

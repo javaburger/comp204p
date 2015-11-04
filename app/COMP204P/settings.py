@@ -43,11 +43,9 @@ LOGIN_EXEMPT_URLS = (
  r'^admin/',
 ) 
 
-CORS_ORIGIN_ALLOW_ALL = True
-
 CORS_ORIGIN_WHITELIST = (
-        'github.com',
-        'localhost'
+    'github.com',
+    'localhost'
 )
 
 MIDDLEWARE_CLASSES = (

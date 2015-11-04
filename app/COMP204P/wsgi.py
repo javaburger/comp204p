@@ -7,10 +7,10 @@ For more information on this file, see
 https://docs.djangoproject.com/en/1.8/howto/deployment/wsgi/
 """
 
-import os
+import sys, os
 
 from django.core.wsgi import get_wsgi_application
 
+sys.path.insert(0, '/home/localuser/comp204p/app')
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "COMP204P.settings")
-
 application = get_wsgi_application()

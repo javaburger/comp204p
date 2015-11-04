@@ -77,7 +77,7 @@ def validateSignature(request):
 	if x_hub_signature:
 		sha_name, signature = x_hub_signature.split('=')
 		mac = hmac.new(GITHUB_WEBHOOK_KEY, msg=request.body, digestmod=hashlib.sha1)
-		return hmac.compare_digest(mac.hexdigest(), signature)
+		return mac.hexdigest() == signature
 	else:
 		return False
 

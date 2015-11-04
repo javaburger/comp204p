@@ -86,9 +86,6 @@ def validateSignature(request):
 
 @csrf_exempt
 def github(request):
-	subprocess.Popen('at now -f /home/localuser/comp204p/bin/restartAndPull.bash', shell=True)
-	return HttpResponse("restarting server for realzzz")
-
 	if request.method == 'POST':
 		if validateSignature(request):
 			body = json.loads(request.body)

@@ -90,7 +90,7 @@ def github(request):
 		if validateSignature(request):
 			body = json.loads(request.body)
 			if body.get("ref", None) and request.META.get('HTTP_X_GITHUB_EVENT', None):
-				if body.get("ref") == "refs/heads/master" and request.META.get("HTTP_X_GITHUB_EVENT") == "push":
+				if body.get("ref") == os.environ.get('GITHUB_AUTOPULL_BRANCH') and request.META.get("HTTP_X_GITHUB_EVENT") == "push":
 					subprocess.Popen('at now -f /home/localuser/comp204p/bin/restartAndPull.bash', shell=True)
 					return HttpResponse("restarting server")
 				else:

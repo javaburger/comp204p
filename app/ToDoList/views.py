@@ -94,7 +94,7 @@ def github(request):
 					subprocess.Popen('at now -f /home/localuser/comp204p/bin/restartAndPull.bash', shell=True)
 					return HttpResponse("restarting server")
 				else:
-					return HttpResponse("headers and body not properly set")
+					return HttpResponse("headers and body not properly set: your ref %s != %s" % (body.get('ref'), os.environ.get('DJANGO_GITHUB_AUTOPULL_BRANCH')))
 			else:
 				return HttpResponse("headers and body not even initialized")
 		else:

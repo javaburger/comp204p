@@ -109,3 +109,14 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.8/howto/static-files/
 
 STATIC_URL = '/static/'
+
+# dbbackup
+
+DBBACKUP_STORAGE = 'dbbackup.storage.ftp_storage'
+DBBACKUP_FTP_HOST = 'studkcheng-p.cs.ucl.ac.uk'
+DBBACKUP_FTP_USER = 'localuser'
+DBBACKUP_FTP_PASSWORD = 'javaburger'
+DBBACKUP_FTP_PATH = '/home/localuser'
+DBBACKUP_FTP_PASSIVE_MODE = True
+DBBACKUP_FILENAME_TEMPLATE = '{datetime}.sqlite'
+DBBACKUP_CLEANUP_KEEP = 3

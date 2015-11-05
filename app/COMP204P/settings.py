@@ -15,8 +15,7 @@ import os
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-
-from . import config
+import COMP204P.config
 
 SECRET_KEY = config.GITHUB_SECRET_KEY
 

@@ -16,10 +16,11 @@ import os
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 
-from passwords import GITHUB_SECRET_KEY
-SECRET_KEY = GITHUB_SECRET_KEY
+import config
 
-DEBUG = eval(os.environ.get("DJANGO_DEBUG_MODE", 'False'))
+SECRET_KEY = config.GITHUB_SECRET_KEY
+
+DEBUG = config.DEBUG_MODE
 
 
 ALLOWED_HOSTS = ['localhost', '127.0.0.1', '.cs.ucl.ac.uk']

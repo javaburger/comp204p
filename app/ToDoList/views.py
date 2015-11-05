@@ -16,7 +16,7 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
 
-from secure import GITHUB_WEBHOOK_KEY
+from .. import config
 
 import hmac
 import hashlib
@@ -90,11 +90,9 @@ def github(request):
 		if validateSignature(request):
 			body = json.loads(request.body)
 			if body.get("ref", None) and request.META.get('HTTP_X_GITHUB_EVENT', None):
-				if body.get("ref") == os.environ.get('DJANGO_GITHUB_AUTOPULL_BRANCH') and request.META.get("HTTP_X_GITHUB_EVENT") == "push":
+				if body.get("ref") == config.GITHUB_AUTOPULL_BRANCH and request.META.get("HTTP_X_GITHUB_EVENT") == "push":
 					subprocess.Popen('at now -f /home/localuser/comp204p/bin/restartAndPull.bash', shell=True)
 					return HttpResponse("restarting server")
-				else:
-					return HttpResponse("headers and body not properly set: your ref %s != %s" % (body.get('ref'), os.environ.get('DJANGO_GITHUB_AUTOPULL_BRANCH')))
 			else:
 				return HttpResponse("headers and body not even initialized")
 		else:

@@ -16,7 +16,7 @@ import os
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 
-import config
+from . import config
 
 SECRET_KEY = config.GITHUB_SECRET_KEY
 

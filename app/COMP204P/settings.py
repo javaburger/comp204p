@@ -35,6 +35,7 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'corsheaders',
     'ToDoList',
+    'dbbackup',
 )
 
 LOGIN_URL = '/login/'

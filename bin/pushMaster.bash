@@ -1,6 +1,6 @@
 #!/bin/bash
 
-LOCAL_SSH_PORT=1234;
+export LOCAL_SSH_PORT=1234;
 VM_HOSTNAME=studbenkhamg-p.cs.ucl.ac.uk;
 TUNNEL_USERNAME=benkhamg;
 TUNNEL_HOSTNAME=newgate.cs.ucl.ac.uk;

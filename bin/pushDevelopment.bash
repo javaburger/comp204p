@@ -15,7 +15,7 @@ fi;
 ssh -N -L${LOCAL_SSH_PORT}:${VM_HOSTNAME}:22 ${TUNNEL_USERNAME}@${TUNNEL_HOSTNAME} -f;
 
 # Run Fabric script
-fab -f ~/www/comp204p/bin/deploy.py deploy;
+fab -f ~/www/comp204p/bin/deploy.py deploy:$LOCAL_SSH_PORT;
 
 # Close SSH tunnel
 PID=$(lsof -i tcp:${LOCAL_SSH_PORT} -t);

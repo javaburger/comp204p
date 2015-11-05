@@ -11,4 +11,4 @@ cd /home/localuser/comp204p/app;
 python manage.py syncdb;
 sudo systemctl start gunicorn;
 
-sudo echo `date "+%Y/%m/%d %H:%M:%S"`: Pulled changes from origin/master and restarted as `whoami` >> /home/localuser/comp204p/logs.txt;
+echo `date "+%Y/%m/%d %H:%M:%S"`: Pulled changes from origin/master and restarted as `whoami` >> /home/localuser/comp204p/logs.txt;

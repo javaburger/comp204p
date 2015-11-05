@@ -2,8 +2,10 @@
 
 from fabric.api import *
 
+local_ssh_port=1236;
+
 env.user = 'localuser'
-env.hosts = ['localhost:1234']
+env.hosts = ['localhost:%d' % local_ssh_port]
 
 def deploy():
 	run('git clone https://github.com/javaburger/comp204p.git || true')

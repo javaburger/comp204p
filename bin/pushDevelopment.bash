@@ -1,8 +1,8 @@
 #!/bin/bash
 
-LOCAL_SSH_PORT=1234;
-VM_HOSTNAME=studsdhall-p.cs.ucl.ac.uk;
-TUNNEL_USERNAME=sdhall;
+LOCAL_SSH_PORT=1236;
+VM_HOSTNAME=studoahmed-p.cs.ucl.ac.uk;
+TUNNEL_USERNAME=benkhamg;
 TUNNEL_HOSTNAME=newgate.cs.ucl.ac.uk;
 
 # Kill existing SSH tunnel

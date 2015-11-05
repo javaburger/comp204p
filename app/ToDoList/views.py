@@ -54,17 +54,17 @@ def signup_view(request):
 		return redirect('ToDoList.views.index')
 	else:
 		if request.method == 'POST':
-            form = UserCreationForm(request.POST)
-            if form.is_valid():
-    			form.save()
-    			'''
-                try:
-    				user = User.objects.create_user(username, '', password)
-    				user.save()
-    			except:
-    				return redirect('ToDoList.views.signupfail_view')
-                '''
-    			return redirect('ToDoList.views.login_view')
+			form = UserCreationForm(request.POST)
+			if form.is_valid():
+				form.save()
+				'''
+				try:
+					user = User.objects.create_user(username, '', password)
+					user.save()
+				except:
+					return redirect('ToDoList.views.signupfail_view')
+				'''
+				return redirect('ToDoList.views.login_view')
 		form = UserCreationForm()
 		return render(request, 'ToDoList/signup.html', {
 			'form': form,

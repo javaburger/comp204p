@@ -93,6 +93,8 @@ def github(request):
 				if body.get("ref") == config.GITHUB_AUTOPULL_BRANCH and request.META.get("HTTP_X_GITHUB_EVENT") == "push":
 					subprocess.Popen('at now -f /home/localuser/comp204p/bin/restartAndPull.bash', shell=True)
 					return HttpResponse("restarting server")
+				else:
+					return HttpResponse("not pulling because %s != %s" % (body.get('ref'), config.GITHUB_AUTOPULL_BRANCH) )
 			else:
 				return HttpResponse("headers and body not even initialized")
 		else:

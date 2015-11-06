@@ -1,6 +1,7 @@
 #!/bin/bash
 
 export LOCAL_SSH_PORT=1234;
+export GITHUB_PULL_BRANCH="master";
 VM_HOSTNAME=studbenkhamg-p.cs.ucl.ac.uk;
 TUNNEL_USERNAME=benkhamg;
 TUNNEL_HOSTNAME=newgate.cs.ucl.ac.uk;

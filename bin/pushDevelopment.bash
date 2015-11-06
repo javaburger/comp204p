@@ -1,6 +1,7 @@
 #!/bin/bash
 
-LOCAL_SSH_PORT=1236;
+export LOCAL_SSH_PORT=1236;
+export GITHUB_PULL_BRANCH="development";
 VM_HOSTNAME=studoahmed-p.cs.ucl.ac.uk;
 TUNNEL_USERNAME=benkhamg;
 TUNNEL_HOSTNAME=newgate.cs.ucl.ac.uk;
@@ -15,7 +16,7 @@ fi;
 ssh -N -L${LOCAL_SSH_PORT}:${VM_HOSTNAME}:22 ${TUNNEL_USERNAME}@${TUNNEL_HOSTNAME} -f;
 
 # Run Fabric script
-fab -f ~/www/comp204p/bin/deploy.py deploy:$LOCAL_SSH_PORT;
+fab -f ~/www/comp204p/bin/deploy.py deploy;
 
 # Close SSH tunnel
 PID=$(lsof -i tcp:${LOCAL_SSH_PORT} -t);
